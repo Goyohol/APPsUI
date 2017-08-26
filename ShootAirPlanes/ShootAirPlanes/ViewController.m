@@ -251,7 +251,12 @@
         NSArray * plistArray = [[NSArray alloc] initWithContentsOfFile:plistPath];
         
         
-        NSMutableArray * addToPlistArr = plistArray.mutableCopy;
+        NSMutableArray * addToPlistArr; //存储的数组
+        if (plistArray) {
+            addToPlistArr = plistArray.mutableCopy;
+        } else { //plist数组 不存在
+            addToPlistArr = @[].mutableCopy;
+        }
         NSDictionary * addDict = @{
                                    @"score":_jifenStr,
                                    @"name":_nameStr
